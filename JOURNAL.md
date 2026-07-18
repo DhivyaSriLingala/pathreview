@@ -16,6 +16,6 @@ This issue is appropriate for my first contribution because it is a clearly defi
 
 **Branch name:** test/157-partial-overlap-fixture
 
-**Setup confirmation:** [ ] App runs locally at localhost:5173
+**Setup confirmation:** [x] App runs locally at localhost:5173
 
 **Cohort ledger:** [ ] Issue added to cohort ledger
