@@ -18,4 +18,4 @@ This issue is appropriate for my first contribution because it is a clearly defi
 
 **Setup confirmation:** [x] App runs locally at localhost:5173
 
-**Cohort ledger:** [ ] Issue added to cohort ledger
+**Cohort ledger:** [x] Issue added to cohort ledger
