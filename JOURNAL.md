@@ -19,3 +19,17 @@ This issue is appropriate for my first contribution because it is a clearly defi
 **Setup confirmation:** [x] App runs locally at localhost:5173
 
 **Cohort ledger:** [x] Issue added to cohort ledger
+
+## Week 8 — Reproduction & solution planning
+
+**Reproduction commit link:** https://github.com/DhivyaSriLingala/pathreview/commit/66d88ee
+
+**Reproduction summary:**
+I ran the targeted `test_query_with_partial_overlap` test and reproduced the failure consistently. The relevance scorer returned `1.0` because all four query tokens occur in the fixture text, causing the test's expected middle-range assertion to fail.
+
+**PLAN.md link:** https://github.com/DhivyaSriLingala/pathreview/blob/test/157-partial-overlap-fixture/PLAN.md
+
+**Walkthrough video (recommended):** Not recorded; this optional item is not graded.
+
+**Blockers or open questions:**
+No current blockers. The evidence indicates that the test fixture should change while the production relevance-scoring implementation remains unchanged.
