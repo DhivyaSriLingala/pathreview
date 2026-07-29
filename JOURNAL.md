@@ -33,3 +33,27 @@ I ran the targeted `test_query_with_partial_overlap` test and reproduced the fai
 
 **Blockers or open questions:**
 No current blockers. The evidence indicates that the test fixture should change while the production relevance-scoring implementation remains unchanged.
+
+## Week 9 — Solution building & PR submission
+
+### Check-in 1 (mid-week)
+
+**Current progress:**
+I completed every implementation sub-task from `PLAN.md` and opened draft PR
+[#343](https://github.com/ascherj/pathreview/pull/343). The partial-overlap
+fixture now shares exactly two of the query's four unique tokens, producing a
+deterministic score of `0.5`; the targeted test passes, and all 19 relevance
+scorer tests pass.
+
+**Next steps:**
+I will request peer or mentor feedback on the draft PR, address any actionable
+feedback, mark the PR ready for review, and complete Check-in 2 with the final
+validation results.
+
+**Blockers:**
+Peer or mentor review is pending. Repository-wide validation has 182
+pre-existing lint errors and 52 pre-existing unit-test failures after this
+fix; the contribution introduced no new failures and removed the issue #157
+failure from the baseline of 53.
+
+---
