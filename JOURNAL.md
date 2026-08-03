@@ -57,3 +57,93 @@ fix; the contribution introduced no new failures and removed the issue #157
 failure from the baseline of 53.
 
 ---
+
+### Check-in 2 (end of week)
+
+**PR link:** https://github.com/ascherj/pathreview/pull/343
+
+**Branch:** `test/157-partial-overlap-fixture`
+
+**What you built:**
+I corrected the partial-overlap test fixture so it contains exactly two of the
+query's four unique tokens and produces the intended relevance score of `0.5`.
+The production relevance-scoring code did not need to change because it was
+already calculating the overlap correctly.
+
+**Tests added or updated:**
+I updated `tests/unit/test_relevance_scorer.py`. The targeted partial-overlap
+test passes, all 19 relevance-scorer tests pass, and the repository-wide unit
+test comparison improved from 53 failures and 375 passes to 52 failures and
+376 passes without introducing any new failures.
+
+**Self-review confirmation:** [x] make check passes  [x] make test-unit passes
+
+The repository-wide commands still report documented pre-existing failures:
+182 Ruff errors and 52 unrelated unit-test failures. Per the assignment's
+baseline rule, these boxes indicate that my contribution introduced no new
+failures.
+
+**Draft PR feedback received from:** none
+
+## Week 10 — Iteration & reflection
+
+### Reviewer feedback
+
+**Feedback received:** [ ] Yes  [x] No — still awaiting review
+
+**Summary of feedback:**
+No reviewer or maintainer feedback had arrived on PR #343 when I completed
+this reflection. Summer 2026 does not include formal reviewer feedback, so I
+documented the current PR status and completed my own final review.
+
+**How you responded:**
+No response or follow-up code change was needed because no feedback was
+received.
+
+---
+
+### Reflection
+
+**What was harder than you expected?**
+Separating a bad test fixture from a production-code defect was harder than I
+expected. The failing assertion initially made the scorer look incorrect, but
+tracing its set-intersection calculation showed that the original chunk
+contained all four query terms and therefore deserved a score of `1.0`. It
+was also challenging to distinguish my result from the repository's existing
+52 unit-test failures and 182 lint errors, which required before-and-after
+baseline comparisons instead of relying on a single green command.
+
+**What did you learn about working in a large codebase?**
+I learned that a narrow issue should lead to a narrow change, supported by
+evidence from the implementation and nearby tests. In someone else's
+codebase, changing production behavior just to satisfy one failing test can
+create regressions, so I first reproduced the failure, read the scoring logic,
+calculated the expected token overlap, and changed only the fixture. I also
+learned that contribution work includes following branch and commit
+conventions, documenting known baseline failures, and making the PR easy for
+a maintainer to evaluate.
+
+**How did AI tools help — and where did they fall short?**
+AI tools helped me navigate the repository, interpret the relevance formula,
+compare baseline and post-change test results, and draft clear journal and PR
+documentation. They were especially useful for turning test output into a
+focused investigation and checking that the final diff stayed within scope.
+However, AI could not replace my judgment about whether the test or production
+code was wrong, and it could not resolve the project's unrelated failures or
+obtain human review. I still had to verify the token math, inspect the actual
+code, run the tests, and decide which suggested changes belonged in this PR.
+
+**What would you do differently if you started over?**
+I would capture the repository-wide test and lint baseline immediately after
+setup and before beginning issue work. That would make it faster to prove that
+later failures were pre-existing. I would also ask my instructor about the
+correct Slack review channel earlier and complete both Week 9 check-ins as
+soon as each milestone was reached instead of filling in the final check-in
+later.
+
+**What are you most proud of from this module?**
+I am most proud that I resisted expanding a one-line fixture problem into an
+unnecessary production-code change. I reproduced the issue, explained the
+root cause with a concrete `2 / 4 = 0.5` expectation, made a minimal fix, and
+used focused plus repository-wide validation to show that the contribution
+removed the intended failure without making the existing baseline worse.
