@@ -76,12 +76,13 @@ test passes, all 19 relevance-scorer tests pass, and the repository-wide unit
 test comparison improved from 53 failures and 375 passes to 52 failures and
 376 passes without introducing any new failures.
 
-**Self-review confirmation:** [x] make check passes  [x] make test-unit passes
+**Self-review confirmation:** [x] `make check` baseline compared: no new failures  [x] `make test-unit` baseline compared: no new failures
 
 The repository-wide commands still report documented pre-existing failures:
 182 Ruff errors and 52 unrelated unit-test failures. Per the assignment's
-baseline rule, these boxes indicate that my contribution introduced no new
-failures.
+baseline rule, these confirmations record that my contribution introduced no
+new failures; they do not claim that the repository-wide commands were fully
+green.
 
 **Draft PR feedback received from:** none
 

@@ -2,7 +2,7 @@
 
 ## Environment
 
-- Branch: `test/157-partial-overlap-fixture`
+- Baseline: upstream `main` before the Issue #157 fixture fix
 - Python: 3.11
 - Test file: `tests/unit/test_relevance_scorer.py`
 - Implementation: `rag/evaluator/relevance_scorer.py`
@@ -10,15 +10,16 @@
 ## Reproduction command
 
 ```bash
-.venv/Scripts/pytest tests/unit/test_relevance_scorer.py::TestRelevanceScorer::test_query_with_partial_overlap -q
+pytest tests/unit/test_relevance_scorer.py::TestRelevanceScorer::test_query_with_partial_overlap -q
 ```
 
-## Observed behavior
+## Pre-fix observed behavior
 
-The test fails at `assert 0.3 < score < 0.9` because `score` is `1.0`.
-The query is `Python Django web framework`, and the fixture text is
+Before this fix, the test failed at `assert 0.3 < score < 0.9` because `score`
+was `1.0`. The query was `Python Django web framework`, and the previous fixture
+text was
 `Django is a Python web framework for rapid development`. All four query
-tokens occur in the fixture text, so the scorer correctly calculates full
+tokens occurred in that fixture text, so the scorer correctly calculated full
 keyword coverage rather than partial overlap.
 
 ## Expected behavior
